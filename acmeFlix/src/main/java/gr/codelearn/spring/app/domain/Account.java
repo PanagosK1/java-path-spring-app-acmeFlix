@@ -10,7 +10,7 @@ import org.hibernate.mapping.Set;
 
 
 public class Account extends BaseModel {
-
+//test comment
     private String firstName;
     private String lastName;
     private String passWord;
