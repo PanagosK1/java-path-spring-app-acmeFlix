@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Profiles extends BaseModel{
     private String username;
-    private long timeWatched;
-    //private ArrayList<Content> history;
-    //private ArrayList<Content> favourite;
+
+    private Account account;
 }
