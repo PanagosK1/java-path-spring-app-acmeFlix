@@ -1,6 +1,6 @@
 spring:
   application:
-    name: PF AcmeFlix app
+    name: PF acmeflix app
   data:
     jpa:
       repositories:
@@ -12,12 +12,11 @@ spring:
       auto-commit: false
       connection-test-query: select 1 from dual;
       connection-timeout: 10000
-
       idle-timeout: 30000
       max-lifetime: 60000
       maximum-pool-size: 10
       minimum-idle: 1
-      pool-name: AcmeFlixConnectionPooling
+      pool-name: acmeFlixConnectionPooling
       transaction-isolation: TRANSACTION_READ_COMMITTED
       username: sa
       password: sa
@@ -26,7 +25,7 @@ spring:
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:~/acmeflix;IFEXISTS=FALSE;AUTO_SERVER=TRUE;
+    url: jdbc:h2:file:~/acmeFlix;IFEXISTS=FALSE;AUTO_SERVER=TRUE;
   h2:
     console:
       enabled: true
@@ -34,10 +33,10 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create #If an import.sql exists in resources, it will be also executed
+      ddl-auto: create-drop #If an import.sql exists in resources, it will be also executed
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        use-new-id-generator-mappings: true
+#      use-new-id-generator-mappings: true
     open-in-view: false
     properties:
       hibernate:
