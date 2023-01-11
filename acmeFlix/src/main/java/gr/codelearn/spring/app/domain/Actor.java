@@ -1,6 +1,7 @@
 package gr.codelearn.spring.app.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.ManyToMany;
 import java.util.List;
 @Data
 @SuperBuilder
+@NoArgsConstructor
 @Entity
 public class Actor extends BaseModel{
 
@@ -16,5 +18,8 @@ public class Actor extends BaseModel{
     private String fullname;
 
     @ManyToMany
-    private List<Content> contents;
+    private List<Movie> movies;
+
+    @ManyToMany
+    private List<Serie> series;
 }

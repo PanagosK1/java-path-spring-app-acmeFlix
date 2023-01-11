@@ -12,7 +12,8 @@ public class Season extends BaseModel{
     @OneToMany(mappedBy = "season")
     private List<Episode> episodes;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "serie_id")
     private Serie serie;
 
     @Column(nullable = false)

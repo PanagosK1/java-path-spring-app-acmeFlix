@@ -1,23 +1,30 @@
 package gr.codelearn.spring.app.domain;
 
-import jakarta.validation.constraints.Min;
-import lombok.Data;
-import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Data
 @SuperBuilder
-public class Rating extends  BaseModel{
+@NoArgsConstructor
+public class Rating extends BaseModel{
 
-    @OneToMany(mappedBy = "ratings")
-    private Content content;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
-    @OneToMany(mappedBy = "ratings")
+    @ManyToOne
+    @JoinColumn(name = "serie_id")
+    private Serie serie;
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @Min(0)

@@ -30,13 +30,9 @@ public class Content extends BaseModel{
     @Column(nullable = false)
     private int ageRestriction;
 
-    @ManyToMany(mappedBy = "contents")
+    @ManyToMany
     private List<Genre> genres;
 
-    @ManyToMany(mappedBy = "contents")
+    @ManyToMany
     private List<Actor> actors;
-
-    @ManyToOne
-    private List<Rating> ratings;
-
 }

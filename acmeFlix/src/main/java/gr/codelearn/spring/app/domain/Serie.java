@@ -8,9 +8,10 @@ import java.util.List;
 
 @Data
 @SuperBuilder
+@NoArgsConstructor
 @Entity
 public class Serie extends Content{
 
-    @OneToMany(mappedBy = "seasons")
+    @OneToMany(mappedBy = "serie")
     private List<Season> seasons;
 }
