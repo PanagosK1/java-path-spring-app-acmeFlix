@@ -1,10 +1,15 @@
 package gr.codelearn.spring.app.domain;
 
-import gr.codelearn.spring.app.domain.enumeration.Subscription;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+
 
 import javax.persistence.*;
+
+import gr.codelearn.spring.app.domain.enumeration.Subscription;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -34,7 +39,7 @@ public class Account extends BaseModel {
     @Column(name = "AGE",length = 50, nullable = false)
     private int Age;
 
-    @OneToMany
+    @OneToMany(mappedBy = "account")
     private List<Profile> profiles;
 
 }

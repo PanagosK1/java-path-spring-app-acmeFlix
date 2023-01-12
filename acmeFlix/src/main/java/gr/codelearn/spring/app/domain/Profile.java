@@ -16,8 +16,12 @@ public class Profile extends BaseModel{
     @Column(nullable = false)
     private String username;
 
-    @OneToOne
-    @JoinColumn(name = "account_id")
+    @ManyToOne
     private Account account;
 
+    @OneToMany(mappedBy = "profile")
+    private List<View> view;
+
+    @OneToMany(mappedBy = "profile")
+    private List<Rating> ratings;
 }

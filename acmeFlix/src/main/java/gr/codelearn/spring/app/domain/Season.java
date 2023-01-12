@@ -1,6 +1,6 @@
 package gr.codelearn.spring.app.domain;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;

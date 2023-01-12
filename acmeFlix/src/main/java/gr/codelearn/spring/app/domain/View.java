@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.context.annotation.Profile;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,5 +19,14 @@ public class View extends BaseModel{
     private double viewedDuration;
 
     private LocalDateTime date;
+
+    @ManyToOne
+    private Profile profile;
+
+    @ManyToOne
+    private Movie movie;
+
+    @ManyToOne
+    private Serie serie;
 
 }
