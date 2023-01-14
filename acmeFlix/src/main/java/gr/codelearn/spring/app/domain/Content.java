@@ -4,6 +4,7 @@ package gr.codelearn.spring.app.domain;
 import gr.codelearn.spring.app.domain.Actor;
 import gr.codelearn.spring.app.domain.BaseModel;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
@@ -35,10 +36,10 @@ public class Content extends BaseModel {
     @Column(nullable = false)
     private int ageRestriction;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Genre> genres;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Actor> actors;
 
 

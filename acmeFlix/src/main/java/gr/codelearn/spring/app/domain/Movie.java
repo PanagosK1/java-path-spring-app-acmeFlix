@@ -7,6 +7,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -20,9 +21,10 @@ public class Movie extends Content{
     @Column(nullable = false)
     private int duration;
 
-    @OneToMany(mappedBy = "movie")
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
     private List<Rating> ratings;
 
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
     private List<View> views;
 }

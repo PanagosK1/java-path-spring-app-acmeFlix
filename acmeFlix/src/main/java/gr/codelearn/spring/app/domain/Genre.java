@@ -18,9 +18,9 @@ public class Genre extends BaseModel{
     @Column(nullable = false)
     private String category;
 
-    @ManyToMany(mappedBy = "genres")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "genres")
     private List<Movie> movies;
 
-    @ManyToMany(mappedBy = "genres")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "genres")
     private List<Serie> series;
 }

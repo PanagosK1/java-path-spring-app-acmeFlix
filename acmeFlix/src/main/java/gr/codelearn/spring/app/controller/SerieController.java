@@ -1,32 +1,32 @@
 package gr.codelearn.spring.app.controller;
 
-
 import gr.codelearn.spring.app.domain.Account;
-import gr.codelearn.spring.app.mapper.AccountMapper;
+import gr.codelearn.spring.app.domain.Serie;
 import gr.codelearn.spring.app.mapper.BaseMapper;
 import gr.codelearn.spring.app.service.AccountService;
 import gr.codelearn.spring.app.service.BaseService;
+import gr.codelearn.spring.app.service.SerieService;
 import gr.codelearn.spring.app.transfer.resource.AccountResource;
+import gr.codelearn.spring.app.transfer.resource.SerieResource;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("accounts")
-public class AccountController extends BaseController<Account, AccountResource> {
+@RequestMapping("series")
+public class SerieController extends BaseController<Serie, SerieResource>{
 
-    private final AccountService accountService;
-    //private final AccountMapper accountMapper;
+    private final SerieService serieService;
+    //private final SerieMapper serieMapper;
 
     @Override
-    protected BaseService<Account, Long> getBaseService() {
-        return accountService;
+    BaseService<Serie, Long> getBaseService() {
+        return serieService;
     }
 
     @Override
-    protected BaseMapper<Account, AccountResource> getBaseMapper() {
+    BaseMapper<Serie, SerieResource> getBaseMapper() {
         return null;
     }
 }

@@ -22,5 +22,5 @@ public class Episode extends BaseModel {
     private Season season;
 
     @Column(nullable = false)
-    private String epTitle;
+    private String Title;
 }
