@@ -18,9 +18,9 @@ public class Actor extends BaseModel {
     @Column(length = 50, nullable = false)
     private String fullname;
 
-    @ManyToMany(mappedBy = "actors")
-    private List<Movie> movies;
-
-    @ManyToMany(mappedBy = "actors")
-    private List<Serie> series;
+//    @ManyToMany(mappedBy = "actors")
+//    private List<Movie> movies;
+//
+//    @ManyToMany(mappedBy = "actors")
+//    private List<Serie> series;
 }

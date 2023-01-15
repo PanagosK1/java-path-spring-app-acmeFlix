@@ -3,6 +3,7 @@ package gr.codelearn.spring.app.controller;
 import gr.codelearn.spring.app.domain.Account;
 import gr.codelearn.spring.app.domain.Movie;
 import gr.codelearn.spring.app.mapper.BaseMapper;
+import gr.codelearn.spring.app.mapper.MovieMapper;
 import gr.codelearn.spring.app.service.AccountService;
 import gr.codelearn.spring.app.service.BaseService;
 import gr.codelearn.spring.app.service.MovieService;
@@ -25,7 +26,7 @@ import java.util.List;
 public class MovieController extends BaseController<Movie, MovieResource>{
 
     private final MovieService movieService;
-    //private final MovieMapper movieMapper;
+    private final MovieMapper movieMapper;
     @Override
     BaseService<Movie, Long> getBaseService() {
         return movieService;
@@ -33,7 +34,7 @@ public class MovieController extends BaseController<Movie, MovieResource>{
 
     @Override
     BaseMapper<Movie, MovieResource> getBaseMapper() {
-        return null;
+        return movieMapper;
     }
 
     @GetMapping(params = {"title"})

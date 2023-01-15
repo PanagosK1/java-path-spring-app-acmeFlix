@@ -1,19 +1,22 @@
 package gr.codelearn.spring.app.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@SuperBuilder
 public class Season extends BaseModel{
 
     @OneToMany(mappedBy = "season")
     private List<Episode> episodes;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "serie_id")
+    @ManyToOne
     private Serie serie;
 
     @Column(nullable = false)

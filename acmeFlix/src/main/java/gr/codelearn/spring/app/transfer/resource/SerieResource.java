@@ -6,12 +6,14 @@ import gr.codelearn.spring.app.transfer.resource.SeasonResource;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
+@SuperBuilder
 public class SerieResource extends ContentResource {
     private List<SeasonResource> seasons;
 

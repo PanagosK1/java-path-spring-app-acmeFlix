@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController extends BaseController<Account, AccountResource> {
 
     private final AccountService accountService;
-    //private final AccountMapper accountMapper;
+    private final AccountMapper accountMapper;
 
     @Override
     protected BaseService<Account, Long> getBaseService() {
@@ -27,6 +27,6 @@ public class AccountController extends BaseController<Account, AccountResource> 
 
     @Override
     protected BaseMapper<Account, AccountResource> getBaseMapper() {
-        return null;
+        return accountMapper;
     }
 }

@@ -3,6 +3,7 @@ package gr.codelearn.spring.app.controller;
 import gr.codelearn.spring.app.domain.Account;
 import gr.codelearn.spring.app.domain.Serie;
 import gr.codelearn.spring.app.mapper.BaseMapper;
+import gr.codelearn.spring.app.mapper.SerieMapper;
 import gr.codelearn.spring.app.service.AccountService;
 import gr.codelearn.spring.app.service.BaseService;
 import gr.codelearn.spring.app.service.SerieService;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SerieController extends BaseController<Serie, SerieResource>{
 
     private final SerieService serieService;
-    //private final SerieMapper serieMapper;
+    private final SerieMapper serieMapper;
 
     @Override
     BaseService<Serie, Long> getBaseService() {
@@ -27,6 +28,6 @@ public class SerieController extends BaseController<Serie, SerieResource>{
 
     @Override
     BaseMapper<Serie, SerieResource> getBaseMapper() {
-        return null;
+        return serieMapper;
     }
 }

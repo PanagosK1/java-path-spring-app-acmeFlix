@@ -16,20 +16,27 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+		<version.lombok>1.18.20</version.lombok>
+		<version.mapstruct>1.4.2.Final</version.mapstruct>
+		<version.mapstruct-lombok>0.2.0</version.mapstruct-lombok>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${org.mapstruct.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -54,71 +61,75 @@
 			<version>2.0.0.Final</version>
 		</dependency>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${version.lombok}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
+			<version>${version.mapstruct}</version>
 		</dependency>
-			</dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok-mapstruct-binding</artifactId>
+			<version>${version.mapstruct-lombok}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
-<!--		<pluginManagement>-->
-<!--			<plugins>-->
-<!--			<plugin>-->
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
-<!--				<artifactId>maven-compiler-plugin</artifactId>-->
-<!--				<version>3.10.1</version>-->
-<!--				<configuration>-->
-<!--					<compilerArguments>-->
-<!--						<source>17</source>-->
-<!--						<target>17</target>-->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+							</exclude>
+							<exclude>
+								<groupId>org.mapstruct</groupId>
+								<artifactId>mapstruct</artifactId>
+							</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.10.1</version>
+					<configuration>
+<!--						<release>17</release>-->
+						<forceJavacCompilerUse>true</forceJavacCompilerUse>
+						<optimize>true</optimize>
+						<fork>true</fork>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.mapstruct</groupId>
+								<artifactId>mapstruct-processor</artifactId>
+								<version>${version.mapstruct}</version>
+							</path>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>${version.lombok}</version>
+							</path>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok-mapstruct-binding</artifactId>
+								<version>${version.mapstruct-lombok}</version>
+							</path>
+						</annotationProcessorPaths>
+					</configuration>
+				</plugin>
 
-<!--					</compilerArguments>-->
-<!--					&lt;!&ndash;-->
-<!--                    In order to compile your project for Java 11, add the release configuration to the compiler-->
-<!--                    plugin, a new compiler parameter to replace the source and target version parameters-->
-<!--                    &ndash;&gt;-->
-<!--					<release>${java.version}</release>-->
-<!--					<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
-<!--					<optimize>true</optimize>-->
-<!--					<fork>true</fork>-->
-<!--					<annotationProcessorPaths>-->
-<!--						<path>-->
-<!--							<groupId>org.mapstruct</groupId>-->
-<!--							<artifactId>mapstruct-processor</artifactId>-->
-<!--							<version>${org.mapstruct.version}</version>-->
-<!--						</path>-->
-<!--					</annotationProcessorPaths>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
-<!--&lt;!&ndash;			<plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;				<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;				<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;				<configuration>&ndash;&gt;-->
-<!--&lt;!&ndash;					<excludes>&ndash;&gt;-->
-<!--&lt;!&ndash;						<exclude>&ndash;&gt;-->
-<!--&lt;!&ndash;							<groupId>org.mapstruct</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;							<artifactId>mapstruct</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;						</exclude>&ndash;&gt;-->
-<!--&lt;!&ndash;					</excludes>&ndash;&gt;-->
-<!--&lt;!&ndash;				</configuration>&ndash;&gt;-->
-<!--&lt;!&ndash;			</plugin>&ndash;&gt;-->
-<!--			</plugins>-->
-<!--		</pluginManagement>-->
+			</plugins>
+		</pluginManagement>
 		<!-- Plugins -->
 		<plugins>
-<!--			<plugin>-->
-<!--				<groupId>org.springframework.boot</groupId>-->
-<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--				<version> 3.0.1</version>-->
-<!--				<configuration>-->
-<!--					<excludes>-->
-<!--						<exclude>-->
-<!--							<groupId>org.mapstruct</groupId>-->
-<!--							<artifactId>mapstruct</artifactId>-->
-<!--						</exclude>-->
-<!--					</excludes>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
 			<plugin>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-maven-plugin</artifactId>
