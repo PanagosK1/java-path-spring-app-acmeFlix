@@ -1,6 +1,8 @@
 package gr.codelearn.spring.app.service;
 
 import gr.codelearn.spring.app.domain.Account;
+import gr.codelearn.spring.app.domain.Episode;
+import gr.codelearn.spring.app.domain.Movie;
 import gr.codelearn.spring.app.domain.Serie;
 import gr.codelearn.spring.app.repository.AccountRepository;
 import gr.codelearn.spring.app.repository.SerieRepository;
@@ -17,4 +19,10 @@ public class SerieServiceImpl extends BaseServiceImpl<Serie> implements SerieSer
     JpaRepository<Serie, Long> getRepository() {
         return null;
     }
+
+    public Serie findByTitle(String title) {
+        return serieRepository.findByTitle(title);
+    }
+
+
 }

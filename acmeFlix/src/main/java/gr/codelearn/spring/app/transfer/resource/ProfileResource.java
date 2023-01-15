@@ -18,9 +18,9 @@ public class ProfileResource extends BaseResource {
     @NotNull
     private String username;
 
-    private AccountResource account;
-
-    private List<ViewResource> view;
-
-    private List<RatingResource> ratings;
+//    private AccountResource account;
+//
+//    private List<ViewResource> view;
+//
+//    private List<RatingResource> ratings;
 }

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,9 +24,11 @@ public class Movie extends Content{
     private int duration;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany( mappedBy = "movie")
     private List<Rating> ratings;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany( mappedBy = "movie")
     private List<View> views;
 }

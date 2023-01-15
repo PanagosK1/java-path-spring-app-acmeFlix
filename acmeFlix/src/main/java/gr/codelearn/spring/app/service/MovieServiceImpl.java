@@ -29,7 +29,6 @@ public class MovieServiceImpl extends BaseServiceImpl<Movie> implements MovieSer
 
     @Override
     public Movie findByTitle(String title) {
-        return Optional.ofNullable(movieRepository.findByTitle(title)).orElseThrow(
-                NoSuchElementException::new);
+        return movieRepository.findByTitle(title);
     }
 }

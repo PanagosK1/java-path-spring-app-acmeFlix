@@ -18,8 +18,7 @@ public class EpisodeResource extends BaseResource {
     @NotNull
     private Integer duration;
 
-    private Season season;
 
     @NotNull
-    private String epTitle;
+    private String Title;
 }

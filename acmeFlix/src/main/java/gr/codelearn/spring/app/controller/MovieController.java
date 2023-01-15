@@ -12,17 +12,19 @@ import gr.codelearn.spring.app.transfer.resource.AccountResource;
 import gr.codelearn.spring.app.transfer.resource.MovieResource;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("movie")
+@RequestMapping("movies")
 public class MovieController extends BaseController<Movie, MovieResource>{
 
     private final MovieService movieService;
@@ -37,9 +39,21 @@ public class MovieController extends BaseController<Movie, MovieResource>{
         return movieMapper;
     }
 
-    @GetMapping(params = {"title"})
-    public ResponseEntity<ApiResponse<Movie>> findByTitle(@RequestParam("title") String title){
-        return ResponseEntity.ok(ApiResponse.<Movie>builder().data(movieService.findByTitle(title)).build());
-        //return movieService.findByTitle(title);
+    @GetMapping(params = {"title"}, path = "findByTitle")
+    public ResponseEntity<ApiResponse<MovieResource>> findByTitle(@RequestParam("title") String title, WebRequest request){
+        logger.info("Movies controller, findByTitle method");
+
+
+        try{
+            Movie result = movieService.findByTitle(title);
+            if(result != null){
+                return ResponseEntity.ok(ApiResponse.<MovieResource>builder().data(getBaseMapper().toResource(result)).build());
+            }else{
+                return ResponseEntity.notFound().build();
+            }
+
+        }catch (Exception exception){
+            return (ResponseEntity<ApiResponse<MovieResource>>) exceptionHandler.handleException(exception, request);
+        }
     }
 }

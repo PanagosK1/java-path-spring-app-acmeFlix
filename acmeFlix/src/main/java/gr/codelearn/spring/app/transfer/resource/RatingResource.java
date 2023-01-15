@@ -13,9 +13,7 @@ import javax.validation.constraints.NotNull;
 @ToString(callSuper = true)
 @SuperBuilder
 public class RatingResource extends BaseResource {
-    private MovieResource movie;
 
-    private SerieResource serie;
 
     private ProfileResource profile;
 

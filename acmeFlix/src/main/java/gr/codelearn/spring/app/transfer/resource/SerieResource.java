@@ -15,9 +15,5 @@ import java.util.List;
 @ToString(callSuper = true)
 @SuperBuilder
 public class SerieResource extends ContentResource {
-    private List<SeasonResource> seasons;
 
-    private List<RatingResource> ratings;
-
-    private List<ViewResource> views;
 }

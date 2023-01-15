@@ -6,6 +6,8 @@ import gr.codelearn.spring.app.mapper.BaseMapper;
 import gr.codelearn.spring.app.service.BaseService;
 import gr.codelearn.spring.app.transfer.ApiResponse;
 import gr.codelearn.spring.app.transfer.resource.BaseResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ import java.util.List;
 public abstract class BaseController <T extends BaseModel, R extends BaseResource> {
     abstract BaseService<T, Long> getBaseService();
     abstract BaseMapper<T, R> getBaseMapper();
+
+    protected GlobalExceptionHandler exceptionHandler = new GlobalExceptionHandler();
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping
     public ResponseEntity<ApiResponse<List<R>>> findAll() {

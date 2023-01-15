@@ -24,7 +24,5 @@ public class ViewResource extends BaseResource {
 
     private ProfileResource profile;
 
-    private MovieResource movie;
 
-    private SerieResource serie;
 }
