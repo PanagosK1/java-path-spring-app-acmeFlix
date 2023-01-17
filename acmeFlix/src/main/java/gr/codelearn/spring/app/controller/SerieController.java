@@ -21,6 +21,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("series")
@@ -73,6 +75,44 @@ public class SerieController extends BaseController<Serie, SerieResource>{
 
         }catch (Exception exception){
             return (ResponseEntity<ApiResponse<EpisodeResource>>) exceptionHandler.handleException(exception, request);
+        }
+    }
+
+    @GetMapping(path = "topTenViewedSeries")
+    public ResponseEntity<ApiResponse<List<String>>> topTenViewedSeries(WebRequest request){
+        //logger.info("Reports controller, topTenViewedContent method");
+
+
+        try{
+            List<String> result = serieService.findTop10ViewedSeries();
+
+            if(result != null){
+                return ResponseEntity.ok(ApiResponse.<List<String>>builder().data(result).build());
+            }else{
+                return ResponseEntity.notFound().build();
+            }
+
+        }catch (Exception exception){
+            return null;
+        }
+    }
+
+    @GetMapping(path = "topTenRatedSeries")
+    public ResponseEntity<ApiResponse<List<String>>> topTenRatedSeries(WebRequest request){
+        //logger.info("Reports controller, topTenViewedContent method");
+
+
+        try{
+            List<String> result = serieService.findTop10RatedSeries();
+
+            if(result != null){
+                return ResponseEntity.ok(ApiResponse.<List<String>>builder().data(result).build());
+            }else{
+                return ResponseEntity.notFound().build();
+            }
+
+        }catch (Exception exception){
+            return null;
         }
     }
 }

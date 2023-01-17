@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class View extends BaseModel{
 
     @Column(nullable = false)
-    private double viewedDuration;
+    private int viewedDuration;
 
     private LocalDateTime date;
 

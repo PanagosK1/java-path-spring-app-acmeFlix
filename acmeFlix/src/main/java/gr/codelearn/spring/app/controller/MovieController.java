@@ -56,4 +56,42 @@ public class MovieController extends BaseController<Movie, MovieResource>{
             return (ResponseEntity<ApiResponse<MovieResource>>) exceptionHandler.handleException(exception, request);
         }
     }
+
+    @GetMapping(path = "topTenViewedMovies")
+    public ResponseEntity<ApiResponse<List<String>>> topTenViewedMovies(WebRequest request){
+        logger.info("Movies controller, topTenViewedContent method");
+
+
+        try{
+            List<String> result = movieService.findTop10ViewedMovies();
+
+            if(result != null){
+                return ResponseEntity.ok(ApiResponse.<List<String>>builder().data(result).build());
+            }else{
+                return ResponseEntity.notFound().build();
+            }
+
+        }catch (Exception exception){
+            return null;
+        }
+    }
+
+    @GetMapping(path = "topTenRatedMovies")
+    public ResponseEntity<ApiResponse<List<String>>> topTenRatedMovies(WebRequest request){
+        //logger.info("Reports controller, topTenViewedContent method");
+
+
+        try{
+            List<String> result = movieService.findTop10RatedMovies();
+
+            if(result != null){
+                return ResponseEntity.ok(ApiResponse.<List<String>>builder().data(result).build());
+            }else{
+                return ResponseEntity.notFound().build();
+            }
+
+        }catch (Exception exception){
+            return null;
+        }
+    }
 }

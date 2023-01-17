@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class SerieServiceImpl extends BaseServiceImpl<Serie> implements SerieService{
@@ -22,6 +24,16 @@ public class SerieServiceImpl extends BaseServiceImpl<Serie> implements SerieSer
 
     public Serie findByTitle(String title) {
         return serieRepository.findByTitle(title);
+    }
+
+    @Override
+    public List<String> findTop10ViewedSeries() {
+        return serieRepository.findTop10ViewedSeries();
+    }
+
+    @Override
+    public List<String> findTop10RatedSeries() {
+        return serieRepository.findTop10RatedSeries();
     }
 
 
