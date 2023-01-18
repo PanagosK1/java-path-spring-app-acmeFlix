@@ -19,7 +19,7 @@ public class SerieServiceImpl extends BaseServiceImpl<Serie> implements SerieSer
 
     @Override
     JpaRepository<Serie, Long> getRepository() {
-        return null;
+        return serieRepository;
     }
 
     public Serie findByTitle(String title) {

@@ -68,7 +68,9 @@ public class SerieController extends BaseController<Serie, SerieResource>{
         try{
             Episode result = episodeService.findEpisodeByTitle(serieTitle, episodeTitle);
             if(result != null){
-                return ResponseEntity.ok(ApiResponse.<EpisodeResource>builder().data(episodeMapper.toResource(result)).build());
+                EpisodeResource mappedResource = episodeMapper.toResource(result);
+                mappedResource.setTitle(result.getTitle()); mappedResource.setSerieTitle(serieTitle);
+                return ResponseEntity.ok(ApiResponse.<EpisodeResource>builder().data(mappedResource).build());
             }else{
                 return ResponseEntity.notFound().build();
             }
@@ -78,9 +80,9 @@ public class SerieController extends BaseController<Serie, SerieResource>{
         }
     }
 
-    @GetMapping(path = "topTenViewedSeries")
-    public ResponseEntity<ApiResponse<List<String>>> topTenViewedSeries(WebRequest request){
-        //logger.info("Reports controller, topTenViewedContent method");
+    @GetMapping(path = "topTenViewed")
+    public ResponseEntity<ApiResponse<List<String>>> topTenViewed(WebRequest request){
+        logger.info("Series controller, topTenViewed method");
 
 
         try{
@@ -93,13 +95,13 @@ public class SerieController extends BaseController<Serie, SerieResource>{
             }
 
         }catch (Exception exception){
-            return null;
+            return (ResponseEntity<ApiResponse<List<String>>>) exceptionHandler.handleException(exception, request);
         }
     }
 
-    @GetMapping(path = "topTenRatedSeries")
-    public ResponseEntity<ApiResponse<List<String>>> topTenRatedSeries(WebRequest request){
-        //logger.info("Reports controller, topTenViewedContent method");
+    @GetMapping(path = "topTenRated")
+    public ResponseEntity<ApiResponse<List<String>>> topTenRated(WebRequest request){
+        logger.info("Series controller, topTenRated method");
 
 
         try{
@@ -112,7 +114,7 @@ public class SerieController extends BaseController<Serie, SerieResource>{
             }
 
         }catch (Exception exception){
-            return null;
+            return (ResponseEntity<ApiResponse<List<String>>>) exceptionHandler.handleException(exception, request);
         }
     }
 }

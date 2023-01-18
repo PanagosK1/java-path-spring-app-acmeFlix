@@ -42,4 +42,18 @@ public class Account extends BaseModel {
     @OneToMany(mappedBy = "account")
     private List<Profile> profiles;
 
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getFirstName());
+        appendFieldValue(dataBuilder, getLastName());
+        appendFieldValue(dataBuilder, getPassWord());
+        appendFieldValue(dataBuilder, getEmail());
+        appendFieldValue(dataBuilder, getSubscription().toString());
+        appendFieldValue(dataBuilder, String.valueOf(getAge()));
+
+
+        return dataBuilder.toString();
+    }
 }

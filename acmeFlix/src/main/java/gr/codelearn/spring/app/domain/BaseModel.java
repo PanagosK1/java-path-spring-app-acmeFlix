@@ -21,6 +21,14 @@ public class BaseModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "idGenerator")
     private Long id;
+
+    protected void appendFieldValue(StringBuilder dataBuilder, String fieldValue) {
+        if(fieldValue != null) {
+            dataBuilder.append(fieldValue).append(",");
+        } else {
+            dataBuilder.append("").append(",");
+        }
+    }
 }

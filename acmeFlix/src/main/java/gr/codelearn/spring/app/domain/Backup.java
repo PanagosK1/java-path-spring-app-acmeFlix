@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -23,4 +25,15 @@ public class Backup extends BaseModel {
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date date;
+
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getPath());
+        appendFieldValue(dataBuilder, getDate().toString());
+
+
+        return dataBuilder.toString();
+    }
 }

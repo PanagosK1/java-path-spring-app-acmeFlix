@@ -22,4 +22,14 @@ public class Season extends BaseModel{
     @Column(nullable = false)
     private Integer season;
 
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getSerie().getId().toString());
+        appendFieldValue(dataBuilder, String.valueOf(getSeason()));
+
+
+        return dataBuilder.toString();
+    }
 }

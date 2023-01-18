@@ -9,6 +9,7 @@ import gr.codelearn.spring.app.service.BaseService;
 import gr.codelearn.spring.app.service.GenreService;
 import gr.codelearn.spring.app.service.MovieService;
 import gr.codelearn.spring.app.transfer.ApiResponse;
+import gr.codelearn.spring.app.transfer.resource.EpisodeResource;
 import gr.codelearn.spring.app.transfer.resource.GenreResource;
 import gr.codelearn.spring.app.transfer.resource.MovieResource;
 import lombok.RequiredArgsConstructor;
@@ -25,24 +26,23 @@ import java.util.List;
 @RequestMapping("genres")
 public class GenreController extends BaseController<Genre, GenreResource>{
 
-
     private final GenreService genreService;
     private final GenreMapper genreMapper;
 
 
     @Override
     BaseService<Genre, Long> getBaseService() {
-        return null;
+        return genreService;
     }
 
     @Override
     BaseMapper<Genre, GenreResource> getBaseMapper() {
-        return null;
+        return genreMapper;
     }
 
     @GetMapping(path = "topFivePopularMovieGenres")
     public ResponseEntity<ApiResponse<List<String>>> topFivePopularMovieGenres(WebRequest request){
-        //logger.info("Reports controller, topTenViewedContent method");
+        logger.info("Genres controller, topFivePopularMovieGenres method");
 
 
         try{
@@ -55,13 +55,13 @@ public class GenreController extends BaseController<Genre, GenreResource>{
             }
 
         }catch (Exception exception){
-            return null;
+            return (ResponseEntity<ApiResponse<List<String>>>) exceptionHandler.handleException(exception, request);
         }
     }
 
     @GetMapping(path = "topFivePopularSerieGenres")
     public ResponseEntity<ApiResponse<List<String>>> topFivePopularSerieGenres(WebRequest request){
-        //logger.info("Reports controller, topTenViewedContent method");
+        logger.info("Reports controller, topFivePopularSerieGenres method");
 
 
         try{
@@ -74,7 +74,7 @@ public class GenreController extends BaseController<Genre, GenreResource>{
             }
 
         }catch (Exception exception){
-            return null;
+            return (ResponseEntity<ApiResponse<List<String>>>) exceptionHandler.handleException(exception, request);
         }
     }
 

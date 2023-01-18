@@ -25,8 +25,6 @@ public class MovieServiceImpl extends BaseServiceImpl<Movie> implements MovieSer
         return movieRepository;
     }
 
-
-
     @Override
     public Movie findByTitle(String title) {
         return movieRepository.findByTitle(title);

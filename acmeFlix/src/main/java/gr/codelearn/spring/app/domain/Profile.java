@@ -24,4 +24,15 @@ public class Profile extends BaseModel{
 
     @OneToMany(mappedBy = "profile")
     private List<Rating> ratings;
+
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getUsername());
+        appendFieldValue(dataBuilder, getAccount().getId().toString());
+
+
+        return dataBuilder.toString();
+    }
 }

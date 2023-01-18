@@ -20,11 +20,13 @@ public class Genre extends BaseModel{
     @Column(nullable = false)
     private String category;
 
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @ManyToMany( mappedBy = "genres")
-//    private List<Movie> movies;
-//
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @ManyToMany(mappedBy = "genres")
-//    private List<Serie> series;
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getCategory());
+
+
+        return dataBuilder.toString();
+    }
 }

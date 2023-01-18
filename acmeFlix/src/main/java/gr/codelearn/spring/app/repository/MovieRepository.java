@@ -2,6 +2,7 @@ package gr.codelearn.spring.app.repository;
 
 
 import gr.codelearn.spring.app.domain.Movie;
+import gr.codelearn.spring.app.transfer.resource.Report;
 import gr.codelearn.spring.app.transfer.resource.ReportTop10;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,4 +29,14 @@ public interface MovieRepository extends JpaRepository<Movie,Long> {
             "GROUP BY MOVIE_ID\n" +
             "ORDER BY SUM(RATING.RATE) DESC", nativeQuery = true)
     List<String> findTop10RatedMovies();
+
+    @Query(value = "select new gr.codelearn.spring.app.transfer.Pair(m.id , g.id)  " +
+            "FROM Movie  m " +
+            "JOIN m.genres g ", nativeQuery = false)
+    List<gr.codelearn.spring.app.transfer.Pair> getMovieGenresTable();
+
+    @Query(value = "select new gr.codelearn.spring.app.transfer.Pair(m.id , a.id)  " +
+            "FROM Movie  m " +
+            "JOIN m.actors a", nativeQuery = false)
+    List<gr.codelearn.spring.app.transfer.Pair> getMovieActorsTable();
 }

@@ -5,17 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Report {
+public class ReportHistory {
+    private String Title;
+    private String Username;
 
-    private Long id;
-
-    private String username;
-
-    private Long viewedDuration;
+    private LocalDateTime Date;
 }

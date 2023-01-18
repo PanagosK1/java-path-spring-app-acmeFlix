@@ -2,9 +2,7 @@ package gr.codelearn.spring.app.transfer.resource;
 
 import gr.codelearn.spring.app.transfer.resource.ActorResource;
 import gr.codelearn.spring.app.transfer.resource.BaseResource;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -13,6 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
 public class ContentResource extends BaseResource {
 

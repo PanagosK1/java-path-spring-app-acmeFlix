@@ -21,4 +21,5 @@ public class EpisodeResource extends BaseResource {
 
     @NotNull
     private String Title;
+    private String SerieTitle;
 }

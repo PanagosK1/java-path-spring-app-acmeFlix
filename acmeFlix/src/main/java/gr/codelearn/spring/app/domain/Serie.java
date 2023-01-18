@@ -21,4 +21,17 @@ public class Serie extends Content{
 
     @OneToMany(mappedBy = "serie")
     private List<View> views;
+
+
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getTitle());
+        appendFieldValue(dataBuilder, String.valueOf(getAgeRestriction()));
+        appendFieldValue(dataBuilder, String.valueOf(getYearPublished()));
+
+
+        return dataBuilder.toString();
+    }
 }

@@ -447,5 +447,5 @@ insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) valu
 insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) values (75, current_date-30, 30, null, 1, 3);
 insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) values (76, current_date-25, 80, null, 2, 4);
 insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) values (77, current_date-15, 90, null, 3, 4);
-insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) values (78, current_date-13, 50, null, 4, 4);
+insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) values (78, current_date-13, 50, null, 5, 4);
 insert into VIEW (ID, DATE, VIEWEDDURATION, MOVIE_ID, PROFILE_ID, SERIE_ID) values (79, current_date-12, 90, null, 1, 4);

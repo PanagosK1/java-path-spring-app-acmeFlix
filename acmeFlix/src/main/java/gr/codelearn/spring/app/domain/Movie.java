@@ -31,4 +31,17 @@ public class Movie extends Content{
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany( mappedBy = "movie")
     private List<View> views;
+
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getTitle());
+        appendFieldValue(dataBuilder, String.valueOf(getAgeRestriction()));
+        appendFieldValue(dataBuilder, String.valueOf(getYearPublished()));
+        appendFieldValue(dataBuilder, String.valueOf(getDuration()));
+
+
+        return dataBuilder.toString();
+    }
 }

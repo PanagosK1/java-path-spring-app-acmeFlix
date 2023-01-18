@@ -10,6 +10,7 @@ import gr.codelearn.spring.app.service.MovieService;
 import gr.codelearn.spring.app.transfer.ApiResponse;
 import gr.codelearn.spring.app.transfer.resource.AccountResource;
 import gr.codelearn.spring.app.transfer.resource.MovieResource;
+import gr.codelearn.spring.app.transfer.resource.SerieResource;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -57,9 +58,9 @@ public class MovieController extends BaseController<Movie, MovieResource>{
         }
     }
 
-    @GetMapping(path = "topTenViewedMovies")
-    public ResponseEntity<ApiResponse<List<String>>> topTenViewedMovies(WebRequest request){
-        logger.info("Movies controller, topTenViewedContent method");
+    @GetMapping(path = "topTenViewed")
+    public ResponseEntity<ApiResponse<List<String>>> topTenViewed(WebRequest request){
+        logger.info("Movies controller, topTenViewed method");
 
 
         try{
@@ -72,13 +73,13 @@ public class MovieController extends BaseController<Movie, MovieResource>{
             }
 
         }catch (Exception exception){
-            return null;
+            return (ResponseEntity<ApiResponse<List<String>>>) exceptionHandler.handleException(exception, request);
         }
     }
 
-    @GetMapping(path = "topTenRatedMovies")
-    public ResponseEntity<ApiResponse<List<String>>> topTenRatedMovies(WebRequest request){
-        //logger.info("Reports controller, topTenViewedContent method");
+    @GetMapping(path = "topTenRated")
+    public ResponseEntity<ApiResponse<List<String>>> topTenRated(WebRequest request){
+        logger.info("Movies controller, topTenRated method");
 
 
         try{
@@ -91,7 +92,7 @@ public class MovieController extends BaseController<Movie, MovieResource>{
             }
 
         }catch (Exception exception){
-            return null;
+            return (ResponseEntity<ApiResponse<List<String>>>) exceptionHandler.handleException(exception, request);
         }
     }
 }

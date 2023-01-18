@@ -5,17 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Report {
+public class ReportHistoryModel {
 
-    private Long id;
+    private String email;
 
-    private String username;
-
-    private Long viewedDuration;
+    private List<ReportHistory> history;
 }

@@ -1,5 +1,6 @@
 package gr.codelearn.spring.app;
 
+import gr.codelearn.spring.app.configuration.BackupTaskConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

@@ -28,4 +28,27 @@ public class Rating extends BaseModel{
     @Column(nullable = false)
     private int rate;
     private String comment;
+
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        if(getMovie() != null){
+            appendFieldValue(dataBuilder, getMovie().getId().toString());
+        }else{
+            appendFieldValue(dataBuilder, "null");
+        }
+        if(getSerie() != null){
+            appendFieldValue(dataBuilder, getSerie().getId().toString());
+        }else{
+            appendFieldValue(dataBuilder, "null");
+        }
+
+        appendFieldValue(dataBuilder, getProfile().getId().toString());
+        appendFieldValue(dataBuilder, String.valueOf(getRate()));
+        appendFieldValue(dataBuilder, getComment());
+
+
+        return dataBuilder.toString();
+    }
 }

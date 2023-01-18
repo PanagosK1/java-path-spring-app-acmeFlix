@@ -1,8 +1,6 @@
 package gr.codelearn.spring.app.transfer.resource;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -10,6 +8,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
 public class BaseResource implements Serializable {
 	protected Long id;

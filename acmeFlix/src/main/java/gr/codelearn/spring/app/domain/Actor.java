@@ -18,9 +18,13 @@ public class Actor extends BaseModel {
     @Column(length = 50, nullable = false)
     private String fullname;
 
-//    @ManyToMany(mappedBy = "actors")
-//    private List<Movie> movies;
-//
-//    @ManyToMany(mappedBy = "actors")
-//    private List<Serie> series;
+    @Override
+    public String toString(){
+        StringBuilder dataBuilder = new StringBuilder();
+        appendFieldValue(dataBuilder, getId().toString());
+        appendFieldValue(dataBuilder, getFullname());
+
+
+        return dataBuilder.toString();
+    }
 }

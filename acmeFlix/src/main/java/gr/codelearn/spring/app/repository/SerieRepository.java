@@ -6,6 +6,7 @@ import gr.codelearn.spring.app.domain.Movie;
 import gr.codelearn.spring.app.domain.Serie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.util.Pair;
 
 import java.util.List;
 
@@ -30,4 +31,14 @@ public interface SerieRepository extends JpaRepository<Serie,Long> {
             "GROUP BY SERIE_ID\n" +
             "ORDER BY SUM(RATING.RATE) DESC", nativeQuery = true)
     List<String> findTop10RatedSeries();
+
+    @Query(value = "select new gr.codelearn.spring.app.transfer.Pair(s.id , g.id)  " +
+            "FROM Serie  s " +
+            "JOIN s.genres g ", nativeQuery = false)
+    List<gr.codelearn.spring.app.transfer.Pair> getSerieGenresTable();
+
+    @Query(value = "select new gr.codelearn.spring.app.transfer.Pair(s.id , a.id)  " +
+            "FROM Serie  s " +
+            "JOIN s.actors a", nativeQuery = false)
+    List<gr.codelearn.spring.app.transfer.Pair> getSerieActorsTable();
 }

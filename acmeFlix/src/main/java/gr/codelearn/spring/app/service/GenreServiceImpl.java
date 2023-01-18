@@ -1,8 +1,6 @@
 package gr.codelearn.spring.app.service;
 
-import gr.codelearn.spring.app.domain.Episode;
 import gr.codelearn.spring.app.domain.Genre;
-import gr.codelearn.spring.app.repository.EpisodeRepository;
 import gr.codelearn.spring.app.repository.GenreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,7 +16,7 @@ public class GenreServiceImpl extends BaseServiceImpl<Genre> implements GenreSer
 
     @Override
     JpaRepository<Genre, Long> getRepository() {
-        return null;
+        return genreRepository;
     }
 
     @Override
